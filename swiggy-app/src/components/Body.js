@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_URL, SWIGGY_API_URL } from "../utils/constants";
+import { SWIGGY_API_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import SampleUi from "./Sample";
 import Shimmer from "./Shimmer";
