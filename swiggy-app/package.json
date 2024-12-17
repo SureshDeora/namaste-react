@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.2"
   },
   "_comment": "to add support for different types of browsers explicitly https://browserslist.dev/",
   "browserslist": [
