@@ -1,0 +1,34 @@
+{
+  "name": "react-basics",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Akshay Saini",
+  "main": "App.js",
+  "_comment1": "remove (main: app.js) for production build - npx parcel build index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SureshDeora/namaste-react.git"
+  },
+  "author": "Suresh Deora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SureshDeora/namaste-react/issues"
+  },
+  "homepage": "https://github.com/SureshDeora/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.13.2",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "_comment": "to add support for different types of browsers explicitly https://browserslist.dev/",
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
