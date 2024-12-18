@@ -96,6 +96,13 @@
 .filter-btn:hover{
     cursor:pointer;
 }
+.rating-bar {
+    display: flex;
+    gap:4px;
+}
+.cost-msg{
+    font-weight: 540;
+}
 
 
 

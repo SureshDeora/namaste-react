@@ -1,31 +1,30 @@
-import { useEffect, useState } from "react";
-import { MENU_URL } from "../utils/constants";
 import {useParams} from "react-router";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RatingCard from "./RatingCard";
+import Shimmer from "./Shimmer";
+
 
 const ResMenu = () => {
-    const [resData, setResData] = useState([])
-    const {resId} = useParams();
-    // console.log(resId);
-    useEffect(() => {
-        fetchMenu();
-    }, []);
 
-    const fetchMenu = async() => {
-        try {
-            const data = await fetch(MENU_URL+resId);
-            // console.log(MENU_URL+resId)
-            const json = await data.json();
-            console.log(json.data)
-            
-        } catch (error) {
-            console.error(error)
-        }
+    const {resId} = useParams();
+    const resInfo = useRestaurantMenu(resId);
     
+    if(resInfo == null) {
+     return <Shimmer/>
     }
+    const {name, cuisines, cloudinaryImageId, costForTwoMessage, avgRating, sla} = resInfo?.cards[2]?.card?.card?.info
+    console.log(name, [...cuisines], costForTwoMessage, avgRating, );
+    const data = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
+    console.log(data);
     return (
         <div>
-            <h1>Restaurant Menu</h1>
-            <h2>Recommended</h2>
+            <h1 className="res-name">{name}</h1>
+            <div className="rating-bar">
+
+            <RatingCard rating={avgRating} time={sla.slaString}/> 
+            <span className="cost-msg"> - {costForTwoMessage} </span>
+            </div>
+            <h2>{cuisines.join(", ")}</h2>
         </div>
     )
 }

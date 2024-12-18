@@ -1,9 +1,11 @@
 import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router";
+import RatingCard from "./RatingCard";
 const RestaurantCard = (props) => {
   // console.log(props);
   const { name, cuisines, cloudinaryImageId, avgRatingString, sla, id } =
     props.resData.info;
+    
   return (
     <div className="res-card">
       <img
@@ -13,16 +15,14 @@ const RestaurantCard = (props) => {
       />
       <Link to={"/restaurant/"+id}><h3>{name}</h3></Link>
       <h4>{cuisines.join(", ")}</h4>
-      {/* <StarSVG /> */}
-      <div className="svg-icon">
+        <RatingCard rating={avgRatingString} time={sla.slaString} />
+      {/* <div className="svg-icon">
       <StarSvg/>
       <div className="rating-tod" >
-        <span className="rating">{avgRatingString} • </span>
+        <span className="rating">{rating} • </span>
         {sla.slaString}
       </div>
-        {/* <h4 className="avg-rating">{avgRatingString}</h4>
-        <h4>{sla.slaString}</h4> */}
-      </div>
+      </div> */}
     </div>
   );
 };
