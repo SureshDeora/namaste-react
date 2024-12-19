@@ -3,6 +3,7 @@ import { SWIGGY_API_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import SampleUi from "./Sample";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterList, setFilterList] = useState([]);
@@ -40,6 +41,12 @@ const Body = () => {
     setSearchTxt(e.target.value);
   };
 
+  const onlineStatus = useOnlineStatus();
+  if(!onlineStatus) {
+    return <h1>
+      Looks like you're offline!! Please check your internet connection....
+    </h1>
+  }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
