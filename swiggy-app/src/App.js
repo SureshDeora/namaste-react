@@ -1,14 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import ResMenu from "./components/ResMenu";
+// import ResMenu from "./components/ResMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 
-
+const ResMenu = lazy(() => import("./components/ResMenu"));
 const AppLayout = () => {
   return (
     <div className="app">
@@ -22,7 +22,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element:<AppLayout/>,   
-    // errorElement: <Error/>,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",
@@ -38,7 +38,9 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:resId",
-        element: <ResMenu/>
+        element:  <Suspense fallback={<h1>Loading....</h1>}>
+                    <ResMenu/> 
+                  </Suspense>
       }
     ],
   },
