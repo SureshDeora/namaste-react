@@ -12,10 +12,12 @@ const ResMenu = () => {
     if(resInfo == null) {
      return <Shimmer/>
     }
-    const {name, cuisines, cloudinaryImageId, costForTwoMessage, avgRating, sla} = resInfo?.cards[2]?.card?.card?.info
+    const {name, cuisines, cloudinaryImageId, costForTwoMessage, avgRating, sla, title} = resInfo?.cards[2]?.card?.card?.info
     // console.log(name, cuisines, costForTwoMessage, avgRating, );
-    const menus = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
-    // console.log(menus);
+    const menus = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
+    // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0].card.card["@type"] );
+    const itemsCatagory = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(ic => ic.card.card["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    console.log(itemsCatagory)
     return (
         <div>
             <h1 className="res-name">{name}</h1>

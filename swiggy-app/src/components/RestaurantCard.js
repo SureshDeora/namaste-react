@@ -2,7 +2,7 @@ import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router";
 import RatingCard from "./RatingCard";
 const RestaurantCard = (props) => {
-  console.log(props);
+  // console.log(props);
   const { name, cuisines, cloudinaryImageId, avgRatingString, sla, id } =
     props.resData.info;
     

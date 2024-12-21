@@ -45,12 +45,13 @@ const Body = () => {
   };
 
   const onlineStatus = useOnlineStatus();
-  if(!onlineStatus) {
-    return <h1>
-      Looks like you're offline!! Please check your internet connection....
-    </h1>
+  if (!onlineStatus) {
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection....
+      </h1>
+    );
   }
-
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -80,9 +81,11 @@ const Body = () => {
       <div className="res-container">
         {filterList.map((restaurant) => (
           <>
-          {restaurant.info.aggregatedDiscountInfoV2 ? <RestaurantCard key={restaurant.info.id} resData={restaurant} /> : <DiscountResCard resData={restaurant} />}
-          
-          {/* {console.log(restaurant.info.aggregatedDiscountInfoV2)} */}
+            {restaurant.info.aggregatedDiscountInfoV2 ? (
+              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            ) : (
+              <DiscountResCard key={restaurant.info.id} resData={restaurant} />
+            )}
           </>
         ))}
       </div>
