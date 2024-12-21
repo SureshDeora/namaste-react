@@ -2,7 +2,7 @@ import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router";
 import RatingCard from "./RatingCard";
 const RestaurantCard = (props) => {
-  // console.log(props);
+  console.log(props);
   const { name, cuisines, cloudinaryImageId, avgRatingString, sla, id } =
     props.resData.info;
     
@@ -19,6 +19,17 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
+export const withDiscount = (RestaurantCard) => {
+  return (props) => {
+    const {header, subHeader} = props.resData.info.aggregatedDiscountInfoV3
+    return (
+      <div>
+        <label className="dis-lbl">{header +" "+ subHeader}</label>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}
 
 
 

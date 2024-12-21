@@ -37,6 +37,17 @@
     width: 200px;
     /* height: 300px; */
 }
+.dis-lbl {
+    position:absolute;
+    margin: 8px;
+    padding: 4px;
+    background-color: black;
+    border-radius: 7px;
+    color:white;
+
+
+   
+}
 .rest-card:hover {
     cursor: pointer;
     border: 1px solid black;

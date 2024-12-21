@@ -4,10 +4,13 @@ import RestaurantCard from "./RestaurantCard";
 import SampleUi from "./Sample";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withDiscount } from "./RestaurantCard";
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [searchTxt, setSearchTxt] = useState("");
+  const DiscountResCard = withDiscount(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -47,6 +50,8 @@ const Body = () => {
       Looks like you're offline!! Please check your internet connection....
     </h1>
   }
+
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -74,7 +79,11 @@ const Body = () => {
       </button>
       <div className="res-container">
         {filterList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <>
+          {restaurant.info.aggregatedDiscountInfoV2 ? <RestaurantCard key={restaurant.info.id} resData={restaurant} /> : <DiscountResCard resData={restaurant} />}
+          
+          {/* {console.log(restaurant.info.aggregatedDiscountInfoV2)} */}
+          </>
         ))}
       </div>
       <div className="res-container">
