@@ -79,15 +79,13 @@ const Body = () => {
         Top Rated Restaurants
       </button>
       <div className="res-container">
-        {filterList.map((restaurant) => (
-          <>
-            {restaurant.info.aggregatedDiscountInfoV2 ? (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-            ) : (
-              <DiscountResCard key={restaurant.info.id} resData={restaurant} />
-            )}
-          </>
-        ))}
+        {filterList.map((restaurant) =>
+          restaurant.info.aggregatedDiscountInfoV2 ? (
+            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          ) : (
+            <DiscountResCard key={restaurant.info.id} resData={restaurant} />
+          )
+        )}
       </div>
       <div className="res-container">
         {filterList.map((restaurant) => (
