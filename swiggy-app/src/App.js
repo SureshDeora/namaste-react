@@ -7,14 +7,19 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 // import ResMenu from "./components/ResMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const ResMenu = lazy(() => import("./components/ResMenu"));
 const AppLayout = () => {
   return (
+    <Provider store={appStore}>
     <div className="app">
       <Header/>
       <Outlet/>
     </div>
+    </Provider>
   )
 }
 
@@ -41,6 +46,10 @@ const appRouter = createBrowserRouter([
         element:  <Suspense fallback={<h1>Loading....</h1>}>
                     <ResMenu/> 
                   </Suspense>
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
       }
     ],
   },

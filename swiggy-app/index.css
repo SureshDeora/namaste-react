@@ -166,11 +166,12 @@
 .add-btn button{
     background:black;
     color: white;
-    
     padding:2px;
     border-radius: 5px;
 }
-
+.add-btn button:hover{
+    cursor:pointer;
+}
 
 
 /* .sample-card {
